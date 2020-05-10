@@ -7,20 +7,22 @@ function CreateExercise(props) {
   const [exercise, setExercise] = useState({
     username: "",
     description: "",
-    duration: "",
+    duration: 0,
     date: new Date(),
     users: [],
   });
 
   useEffect(() => {
     axios.get("http://localhost:5000/users/").then((res) => {
+      console.log("ress", res);
+
       if (res.data.length > 0) {
         setExercise({
           ...exercise,
           users: res.data.map((user) => {
             return user.username;
           }),
-          username: exercise.users[0],
+          username: res.data[0].username,
         });
       }
     });

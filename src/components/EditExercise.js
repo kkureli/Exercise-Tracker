@@ -19,6 +19,7 @@ function EditExercise(props) {
         const response = await axios.get(
           "http://localhost:5000/exercises/" + props.match.params.id
         );
+        console.log(response.data.duration, "dur");
 
         setExercise({
           username: response.data.username,
@@ -56,6 +57,7 @@ function EditExercise(props) {
   };
   const onChangeDuration = (e) => {
     setExercise({ ...exercise, duration: e.target.value });
+    console.log(exercise);
   };
   const onChangeDate = (date) => {
     setExercise({ ...exercise, date: date });
@@ -63,6 +65,7 @@ function EditExercise(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(exercise);
 
     axios
       .post(
@@ -76,6 +79,7 @@ function EditExercise(props) {
 
   return (
     <div>
+      {console.log(exercise.duration, "dur")}
       <p>You are on the Edit Exercises component!</p>
       <div>
         <h3>Edit Exercise</h3>
