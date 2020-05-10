@@ -12,9 +12,7 @@ function CreateUser(props) {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:5000/users/add", userName)
-      .then((res) => console.log(res.data)); // routes/user'daki res.json res.data oluyor
+    axios.post("api/users/add", userName).then((res) => console.log(res.data)); // routes/user'daki res.json res.data oluyor
     props.history.push("/");
   };
 

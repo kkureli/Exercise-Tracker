@@ -17,7 +17,7 @@ function EditExercise(props) {
     const fetchExercise = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/exercises/" + props.match.params.id
+          "/api/exercises/" + props.match.params.id
         );
         console.log(response.data.duration, "dur");
 
@@ -34,7 +34,7 @@ function EditExercise(props) {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/users/");
+        const response = await axios.get("/api/users/");
         if (response.data.length > 0) {
           const usersArray = [];
           response.data.map((user) => usersArray.push(user.username));
@@ -68,10 +68,7 @@ function EditExercise(props) {
     console.log(exercise);
 
     axios
-      .post(
-        "http://localhost:5000/exercises/update/" + props.match.params.id,
-        exercise
-      )
+      .post("/api/exercises/update/" + props.match.params.id, exercise)
       .then((res) => console.log(res.data));
 
     window.location = "/";

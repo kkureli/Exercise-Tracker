@@ -8,13 +8,13 @@ function ExercisesList() {
   const [exercises, setExercises] = useState({ exercises: [] });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/exercises/").then((res) => {
+    axios.get("/api/exercises").then((res) => {
       setExercises({ exercises: res.data });
     });
   }, []);
 
   const onDelete = (id) => {
-    axios.delete("http://localhost:5000/exercises/" + id);
+    axios.delete("/api/exercises/" + id);
     setExercises({
       exercises: exercises.exercises.filter((el) => el._id !== id),
     });

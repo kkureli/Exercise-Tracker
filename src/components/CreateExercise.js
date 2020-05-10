@@ -13,7 +13,7 @@ function CreateExercise(props) {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/users/").then((res) => {
+    axios.get("api/users/").then((res) => {
       console.log("ress", res);
 
       if (res.data.length > 0) {
@@ -45,7 +45,7 @@ function CreateExercise(props) {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/exercises/add", exercise)
+      .post("api/exercises/add", exercise)
       .then((res) => console.log(res.data));
 
     window.location = "/";
